@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class TextGame : MonoBehaviour
 {
+    int min = 1;
+    int max = 1000;
+    int shoot = 500 / 2;
+
     // Start is called before the first frame update
     void Start()
     {
+       
+
         Debug.Log("Witam w grze - pomyœl o liczbie od 1 do 1000");
         Debug.Log("Czy twoja liczba jest rowna, wieksza czy mniejsza od 500?");
         
@@ -15,13 +21,21 @@ public class TextGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("Nacisnieto gorna strzalke");
+            min = shoot;
+            shoot = (min + max) / 2;
+            Debug.Log("Czy twoja liczba jest rowna, wieksza czy mniejsza od " + shoot + "?");
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Debug.Log("Nacisnieto dolna strzalke");
+            max = shoot;
+            shoot = (min + max) / 2;
+            Debug.Log("Czy twoja liczba jest rowna, wieksza czy mniejsza od " + shoot + "?");
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Debug.Log("KOMPUTER ZGADL LICZBE");
         }
 
     }
